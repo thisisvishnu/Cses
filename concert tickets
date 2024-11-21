@@ -1,0 +1,63 @@
+    #include <bits/stdc++.h>
+    using namespace std;
+    typedef long long ll;
+    typedef vector<ll> vi;
+    typedef pair<ll,ll> pll;
+    #define f first
+    #define s second
+    #define pb push_back
+    #define eb emplace_back
+    
+    const int mod = 1000000007;
+    ll power(ll a,ll b){
+        ll ans=1;
+        while(b){
+            if(b&1) ans=(ans*a)%mod;
+            a=(a*a)%mod;
+            b>>=1;
+        }
+        return ans;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    int main() {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+    
+        ll n,m;
+        cin>>n>>m;
+        multiset<ll> a;
+        for(ll i=0;i<n;i++){
+            ll num;
+            cin>>num;
+            a.insert(num);
+        }
+        vi b(m);
+        for(ll i=0;i<m;i++){
+            cin>>b[i];
+        }
+        
+        
+        for(auto i:b){
+            auto ind=a.upper_bound(i);
+            
+            if(ind==a.begin()){
+                cout<<-1<<"\n";
+            }
+            else{
+                --ind;
+                cout<<*ind<<"\n";
+                a.erase(ind);
+            }
+        }
+    
+        return 0;
+    }
